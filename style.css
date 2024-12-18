@@ -1,0 +1,87 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #2a1e2d;
+  color: #f0e6f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #3e2c4a;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 400px;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #ff77a9;
+}
+
+button {
+  background-color: #ff77a9;
+  color: #2a1e2d;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #ff5f8b;
+}
+
+button:disabled {
+  background-color: #d1a1b7;
+  cursor: not-allowed;
+}
+
+.hidden {
+  display: none;
+}
+
+#food-menu {
+  margin-top: 20px;
+}
+
+#food-input {
+  padding: 10px;
+  border: 1px solid #f0e6f6;
+  border-radius: 5px;
+  margin-right: 10px;
+  width: calc(100% - 100px);
+  max-width: 250px;
+}
+
+#food-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+#food-list li {
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#food-list button {
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+#result {
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffb3d9;
+}

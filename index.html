@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Chooser</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>What Food Should You Choose?</h1>
+        <button id="add-food-btn">Add Food</button>
+        <div id="food-menu" class="hidden">
+            <input type="text" id="food-input" placeholder="Enter food...">
+            <button id="add-to-list-btn">Add</button>
+            <ul id="food-list"></ul>
+        </div>
+        <button id="start-btn">Start</button>
+        <div id="result" class="hidden"></div>
+    </div>
+
+    <script>
+        const addFoodBtn = document.getElementById('add-food-btn');
+        const foodMenu = document.getElementById('food-menu');
+        const foodInput = document.getElementById('food-input');
+        const addToListBtn = document.getElementById('add-to-list-btn');
+        const foodList = document.getElementById('food-list');
+        const startBtn = document.getElementById('start-btn');
+        const result = document.getElementById('result');
+
+        let foods = [];
+
+        addFoodBtn.addEventListener('click', () => {
+            foodMenu.classList.toggle('hidden');
+        });
+
+        addToListBtn.addEventListener('click', () => {
+            const food = foodInput.value.trim();
+            if (food) {
+                foods.push(food);
+                const listItem = document.createElement('li');
+                listItem.textContent = food;
+                const deleteBtn = document.createElement('button');
+                deleteBtn.textContent = 'Delete';
+                deleteBtn.addEventListener('click', () => {
+                    foods = foods.filter(f => f !== food);
+                    foodList.removeChild(listItem);
+                });
+                listItem.appendChild(deleteBtn);
+                foodList.appendChild(listItem);
+                foodInput.value = '';
+            }
+        });
+
+        startBtn.addEventListener('click', () => {
+            if (foods.length === 0) return;
+
+            startBtn.classList.add('hidden');
+            let shuffleInterval = setInterval(() => {
+                result.textContent = foods[Math.floor(Math.random() * foods.length)];
+                result.classList.remove('hidden');
+            }, 100);
+
+            setTimeout(() => {
+                clearInterval(shuffleInterval);
+                result.textContent = foods[Math.floor(Math.random() * foods.length)];
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
